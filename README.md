@@ -1,4 +1,4 @@
-~~Ejercicio para evaluación de candidatos para Developers Android
+Ejercicio para evaluación de candidatos para Developers Android
 ===============================================================
 
 Aplicación de administración de Tareas desarrollada para evaluar al Android Developer.
