@@ -143,7 +143,7 @@ Crear un propio fork con el usuario Github del developer.
 
 ### Clonar el proyecto a tu máquina
 
-Probablemente estás leyendo esto en Github. Si no, puedes encontrar el proyecto ![en GitHub](https://github.com/sodep/test-android-java)
+Probablemente estás leyendo esto en Github. Si no, puedes encontrar el proyecto [en GitHub](https://github.com/sodep/test-android-java)
 Para empezar a trabajar, empieza por clonar el repositorio en tu máquina. Haz tu trabajo localmente y haz un commit de tus cambios a tu repositorio local git a medida que vayas avanzando.
 
 ### Documentación de la API a consumir
