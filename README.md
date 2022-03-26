@@ -54,6 +54,7 @@ Esta pantalla debe mostrar el listado de tareas proveídas por el API en el serv
 Ejemplo de llamada y respuesta del API para listado de tareas:
 
 ![Login](./assets/screenshots/api_list_req.png)
+
 Como se podrá observar, el access token va en un Header Authorization como Bearer token
 
 ![Login](./assets/screenshots/api_list_res.png)
@@ -75,6 +76,7 @@ Esta pantalla posibilitará la creación de nuevas tareas por parte del usuario.
 Ejemplo de llamada y respuesta del API para creación de tareas:
 
 ![Login](./assets/screenshots/api_create_req.png)
+
 También debe llevar el access token va en un Header Authorization como Bearer token
 
 ![Login](./assets/screenshots/api_create_res.png)
@@ -97,6 +99,7 @@ Desde la lista de tareas, el usuario debe poder hacer un tap en una tarea en par
 Ejemplo de llamada y respuesta del API para listado de edición:
 
 ![Login](./assets/screenshots/api_create_req.png)
+
 También debe llevar el access token va en un Header Authorization como Bearer token
 
 ![Login](./assets/screenshots/api_create_res.png)
@@ -140,7 +143,7 @@ Crear un propio fork con el usuario Github del developer.
 
 ### Clonar el proyecto a tu máquina
 
-Probablemente estás leyendo esto en Github. Si no, puedes encontrar el proyecto [en GitHub]
+Probablemente estás leyendo esto en Github. Si no, puedes encontrar el proyecto ![en GitHub](https://github.com/sodep/test-android-java)
 Para empezar a trabajar, empieza por clonar el repositorio en tu máquina. Haz tu trabajo localmente y haz un commit de tus cambios a tu repositorio local git a medida que vayas avanzando.
 
 ### Documentación de la API a consumir
