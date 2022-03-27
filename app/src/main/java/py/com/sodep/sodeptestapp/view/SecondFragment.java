@@ -79,14 +79,11 @@ public class SecondFragment extends Fragment {
             getList();
         });
 
-
-        binding.buttonSecond.setOnClickListener(view -> NavHostFragment.findNavController(SecondFragment.this)
-                .navigate(R.id.action_SecondFragment_to_FirstFragment));
     }
 
     private void configureRecycler() {
         recycler = getActivity().findViewById(R.id.rvTasks);
-        adapter = new TaskAdapter(listTasks);
+        adapter = new TaskAdapter(listTasks,apiInterface);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recycler.setLayoutManager(mLayoutManager);
         recycler.setItemAnimator(new DefaultItemAnimator());

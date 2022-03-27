@@ -3,14 +3,11 @@ package py.com.sodep.sodeptestapp;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Window;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
 import py.com.sodep.sodeptestapp.models.MCreatedTask;
 import py.com.sodep.sodeptestapp.network.ApiInterface;
 import retrofit2.Call;
@@ -22,10 +19,11 @@ public class DialogTask extends AlertDialog {
     private MaterialButton dialogButton;
     private TextInputLayout tvTitle;
     private TextInputLayout tvDescription;
-    private TextInputEditText etDescripcion;
     private ApiInterface apiInterface;
     private String title;
     private String description;
+    private Switch swIsFavorite;
+    private Boolean isFavorite = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +32,7 @@ public class DialogTask extends AlertDialog {
         tvTitle = findViewById(R.id.tvTitleDialog);
         tvDescription = findViewById(R.id.tvDescrition);
         dialogButton = findViewById(R.id.buttonOk);
-        etDescripcion = findViewById(R.id.etDescription);
+        swIsFavorite = findViewById(R.id.swFavorite);
         configureOnClickListerner();
     }
 
@@ -42,10 +40,12 @@ public class DialogTask extends AlertDialog {
         this.getWindow().clearFlags(
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
                         WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+
+        swIsFavorite.setOnCheckedChangeListener((compoundButton, b) -> isFavorite = b);
         dialogButton.setOnClickListener(view -> {
             title = tvTitle.getEditText().getText().toString();
             description = tvTitle.getEditText().getText().toString();
-            Call<MCreatedTask> call = apiInterface.postTasks(new MCreatedTask(title,description,true));
+            Call<MCreatedTask> call = apiInterface.postTasks(new MCreatedTask(title,description,isFavorite));
             call.enqueue(new Callback<MCreatedTask>() {
                 @Override
                 public void onResponse(Call<MCreatedTask> call, Response<MCreatedTask> response) {
