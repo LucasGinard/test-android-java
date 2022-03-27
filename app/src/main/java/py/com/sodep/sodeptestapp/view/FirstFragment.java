@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
+import py.com.sodep.sodeptestapp.R;
 import py.com.sodep.sodeptestapp.databinding.FragmentFirstBinding;
 import py.com.sodep.sodeptestapp.models.AuthID;
 import py.com.sodep.sodeptestapp.models.Account;
@@ -22,7 +25,6 @@ public class FirstFragment extends Fragment {
     private FragmentFirstBinding binding;
     ApiService service;
     ApiInterface apiInterface;
-    String tokenId;
 
     @Override
     public View onCreateView(
@@ -45,9 +47,9 @@ public class FirstFragment extends Fragment {
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                NavHostFragment.findNavController(FirstFragment.this)
-//                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-                getListAccounts();
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                //getListAccounts();
             }
         });
     }
