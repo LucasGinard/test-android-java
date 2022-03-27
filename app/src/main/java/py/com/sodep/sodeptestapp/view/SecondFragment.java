@@ -1,4 +1,4 @@
-package py.com.sodep.sodeptestapp;
+package py.com.sodep.sodeptestapp.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import py.com.sodep.sodeptestapp.R;
 import py.com.sodep.sodeptestapp.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {
