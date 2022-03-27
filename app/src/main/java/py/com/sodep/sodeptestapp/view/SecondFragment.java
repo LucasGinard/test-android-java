@@ -1,10 +1,13 @@
 package py.com.sodep.sodeptestapp.view;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,8 +16,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.ArrayList;
 
+import py.com.sodep.sodeptestapp.DialogTask;
 import py.com.sodep.sodeptestapp.R;
 import py.com.sodep.sodeptestapp.adapter.TaskAdapter;
 import py.com.sodep.sodeptestapp.databinding.FragmentSecondBinding;
@@ -33,6 +42,7 @@ public class SecondFragment extends Fragment {
     private ArrayList<Tasks> listTasks;
     private TaskAdapter adapter;
     private RecyclerView recycler;
+    private DialogTask dialogTask;
 
     @Override
     public View onCreateView(
@@ -50,15 +60,28 @@ public class SecondFragment extends Fragment {
         service = new ApiService();
         apiInterface = service.getService();
         listTasks = new ArrayList();
+        dialogTask = new DialogTask(getContext(),apiInterface);
+        configureOnClickListener();
         configureRecycler();
         getList();
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
+
+    }
+
+    private void configureOnClickListener() {
+        binding.btnAdd.setOnClickListener(view -> {
+            dialogTask.getWindow().clearFlags(
+                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
+                            WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+            dialogTask.show();
         });
+
+        dialogTask.setOnDismissListener(view ->{
+            getList();
+        });
+
+
+        binding.buttonSecond.setOnClickListener(view -> NavHostFragment.findNavController(SecondFragment.this)
+                .navigate(R.id.action_SecondFragment_to_FirstFragment));
     }
 
     private void configureRecycler() {
@@ -95,4 +118,9 @@ public class SecondFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getList();
+    }
 }
